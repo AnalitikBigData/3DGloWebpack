@@ -4,7 +4,20 @@ const modal = () => {
     const modal = document.querySelector('.popup');
     const buttons = document.querySelectorAll('.popup-btn');
     const closeBtn = modal.querySelector('.popup-close');
-    console.dir(modal);
+    let inputPhone = modal.querySelectorAll('.form-phone');
+    let inputEmail = modal.querySelectorAll('.form-email');
+
+    inputPhone.forEach((item) => {
+        item.addEventListener('input', (event) => {
+            event.target.value = event.target.value.replace(/[^0-9-()]/g, "");
+        })
+    })
+
+    inputEmail.forEach((item) => {
+        item.addEventListener('input', (event) => {
+            event.target.value = event.target.value.replace(/[^a-zA-Z@-_.!~*']/g, "");
+        })
+    })
 
     const animationModal = () => {
         count++;
