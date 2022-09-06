@@ -40,14 +40,21 @@ const priceCalc = () => {
         }
         return inputValue;
     }
-
+    //event.target.value = event.target.value.replace(/[^a-zA-Z@-_.!~*']/g, "");
+    //event.target.value = event.target.value.replace(/[^0-9-()]/g, "");
     selectTypeObj.addEventListener('change', addTypeObject);
-    square.addEventListener('change', (event) => {
-        event.target.value = event.target.value.replace(/\d+/, "");
+    square.addEventListener('input', (event) => {
+        event.target.value = event.target.value.replace(/[^0-9]/g, "");
         countedInputValue();
     });
-    count.addEventListener('change', countedInputValue);
-    timeOfPerfomance.addEventListener('change', countedInputValue);
+    count.addEventListener('input', (event) => {
+        event.target.value = event.target.value.replace(/[^0-9]/g, "");
+        countedInputValue();
+    });
+    timeOfPerfomance.addEventListener('input', (event) =>{
+        event.target.value = event.target.value.replace(/[^0-9]/g, "");
+        countedInputValue();
+    });
     console.log(addTypeObject());
     console.log(countedInputValue());
     

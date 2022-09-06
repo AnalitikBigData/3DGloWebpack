@@ -40,10 +40,11 @@ const modal = () => {
         })
     })
 
-    closeBtn.addEventListener('click', () => {
-        modal.style.display = 'none';
+    modal.addEventListener('click', (event) => {
+        if(!event.target.closest('.popup-content') || event.target.classList.contains('popup-close')){
+            modal.style.display = 'none';
+        }
     })
-    console.dir(document);
 }
 
 export default modal
