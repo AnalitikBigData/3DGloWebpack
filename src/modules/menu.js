@@ -6,7 +6,8 @@ const menu = () => {
     const inputName = document.querySelector('.form-name');
     const inputEmail = document.querySelector('.form-email');
     const inputTel = document.querySelector('.form-phone');
-    const menuClass = document.querySelector('.menu');
+    
+    
     
     const handleMenu = () => {
         menu.classList.toggle('active-menu');
@@ -24,7 +25,7 @@ const menu = () => {
         event.target.value = event.target.value.replace(/[^0-9-()]/g, "");
     })
 
-    menuClass.addEventListener('click', (event) => {
+    menuBtn.addEventListener('click', (event) => {
         if(event.target.closest('.menu')){
             handleMenu();
         }
@@ -32,7 +33,7 @@ const menu = () => {
     })
 
     menu.addEventListener('click',(event) => {
-        if(event.target.closest('menu>ul') || event.target.closest('menu>a')){
+        if(event.target.closest('menu>ul') || event.target.closest('menu>a') || !(event.target.closest('.active-menu'))){
             handleMenu();
         }
     })
