@@ -37,6 +37,8 @@ const menu = () => {
             handleMenu();
         }
     })
+
+    
     //menuBtn.addEventListener('click', handleMenu);
     //closeBtn.addEventListener('click', handleMenu);
     //menuItems.forEach(menuItem => menuItem.addEventListener('click', handleMenu))

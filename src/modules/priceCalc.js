@@ -1,62 +1,62 @@
-const priceCalc = () => {
+const priceCalc = (price = 100) => {
     const calc = document.querySelector('.col-lg-6.col-12.flex');
+    const calcBlock = document.querySelector('.calc-block')
     let building = calc.querySelector('.calc-type');
-    const typeObject = [];
-    let valueTypeObject = 0;
-    let inputValue = [];
     const selectTypeObj = calc.querySelector('select');
     const square = calc.querySelector('.calc-square');
     const count = calc.querySelector('.calc-count');
     const timeOfPerfomance = calc.querySelector('.calc-day');
+    const total = document.getElementById('total');
+   
     
-    const addTypeObject = () => {
-        building = calc.querySelectorAll('.calc-block');
-        building.forEach((typeItem) => {
-            const select = typeItem.querySelector('select');
-            const selectLabel = select.options[select.selectedIndex].label;
+    const countCalc = () => {
+        const calcTypeValue = +building.options[building.selectedIndex].value;
+        const calcSquareValue = square.value;
 
-            typeObject.push({
-                option : selectLabel,
-                value : +select.value,
-            })
-        })
-        typeObject.splice(0, typeObject.length - 1);
-        return typeObject;
-        
-    }
-    const countedInputValue = () => {
-        if(!/[^\d]/g.test(square.value) && square.value != ''){
-            if(!/[^\d]/g.test(count.value) && count.value != ''){
-                if(!/[^\d]/g.test(timeOfPerfomance.value) && timeOfPerfomance.value != ''){
-                    console.log('====');
-                    inputValue.push({
-                        square : +square.value,
-                        count : +count.value,
-                        day : +timeOfPerfomance.value
-                    })
-                }
-            }
-            
+        let totalValue = 0;
+        let calcCountValue = 1;
+        let calcDayValue = 1;
+
+        if(timeOfPerfomance.value && timeOfPerfomance.value < 5){
+            calcDayValue = 2;
         }
-        return inputValue;
+        else if(timeOfPerfomance.value && timeOfPerfomance.value < 10){
+            calcDayValue = 1.5;
+        }
+
+        if(count.value > 1){
+            calcCountValue += +count.value / 10;
+        }
+        if(building.value && square.value){
+            totalValue = price * calcTypeValue * calcSquareValue * calcCountValue * calcDayValue;
+        }
+        else{
+            totalValue = 0
+        }
+
+        total.textContent = totalValue;
     }
-    //event.target.value = event.target.value.replace(/[^a-zA-Z@-_.!~*']/g, "");
-    //event.target.value = event.target.value.replace(/[^0-9-()]/g, "");
-    selectTypeObj.addEventListener('change', addTypeObject);
+
+    calcBlock.addEventListener('input', (e) => {
+        if(e.target === building || e.target === square || e.target === count || e.target === timeOfPerfomance){
+            countCalc();
+        }
+    })
+    //selectTypeObj.addEventListener('change', addTypeObject);
     square.addEventListener('input', (event) => {
         event.target.value = event.target.value.replace(/[^0-9]/g, "");
-        countedInputValue();
+
     });
     count.addEventListener('input', (event) => {
         event.target.value = event.target.value.replace(/[^0-9]/g, "");
-        countedInputValue();
+
     });
     timeOfPerfomance.addEventListener('input', (event) =>{
         event.target.value = event.target.value.replace(/[^0-9]/g, "");
-        countedInputValue();
+
     });
-    console.log(addTypeObject());
-    console.log(countedInputValue());
+    //console.log(addTypeObject());
+    //console.log(countedInputValue());
     
 }
 
