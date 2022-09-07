@@ -6,6 +6,13 @@ const modal = () => {
     const closeBtn = modal.querySelector('.popup-close');
     let inputPhone = modal.querySelectorAll('.form-phone');
     let inputEmail = modal.querySelectorAll('.form-email');
+    let inputName = modal.querySelectorAll('.form-name');
+    
+    inputName.forEach((item) => {
+        item.addEventListener('input', (event) => {
+            event.target.value = event.target.value.replace(/[^а-яА-Я]/g, "");
+        })
+    })
 
     inputPhone.forEach((item) => {
         item.addEventListener('input', (event) => {
@@ -15,15 +22,15 @@ const modal = () => {
 
     inputEmail.forEach((item) => {
         item.addEventListener('input', (event) => {
-            event.target.value = event.target.value.replace(/[^a-zA-Z@-_.!~*']/g, "");
+            event.target.value = event.target.value.replace(/[^a-zA-Z0-9@-_.!~*']/g, "");
         })
     })
 
     const animationModal = () => {
         count++;
         animate = requestAnimationFrame(animationModal);
-        if(count < 135){
-            modal.childNodes[1].style.left = count * 7 + 'px';
+        if(count < 50){
+            modal.childNodes[1].style.left = count * 12 + 'px';
         }
         else{
             count = 0;
