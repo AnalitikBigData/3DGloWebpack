@@ -3,11 +3,11 @@ const slider = () =>{
     const sliderBlock = document.querySelector('.portfolio-content');
     const sliders = document.querySelectorAll('.portfolio-item');
     const btnNext = document.querySelector('.portfolio-btn.next');
-    //console.dir(btnNext);
-    //const dots = document.querySelectorAll('.dot');
+    
     const dotClass = document.createElement('ul');
     dotClass.className = 'portfolio-dots';
     btnNext.after(dotClass);
+    console.log(dotClass)
     
     const createDot = () => {
         for(let i = 0; i < sliders.length; i++){

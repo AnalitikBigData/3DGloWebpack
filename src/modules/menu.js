@@ -7,8 +7,6 @@ const menu = () => {
     const inputEmail = document.querySelector('.form-email');
     const inputTel = document.querySelector('.form-phone');
     
-    
-    
     const handleMenu = () => {
         menu.classList.toggle('active-menu');
     }

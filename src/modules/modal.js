@@ -1,3 +1,4 @@
+import { animationModal } from "./helpers";
 const modal = () => {
     let count = 0;
     let animate;
@@ -26,7 +27,7 @@ const modal = () => {
         })
     })
 
-    const animationModal = () => {
+    /*const animationModal = () => {
         count++;
         animate = requestAnimationFrame(animationModal);
         if(count < 50){
@@ -36,13 +37,13 @@ const modal = () => {
             count = 0;
             cancelAnimationFrame(animate);
         }
-    }
+    }*/
 
     buttons.forEach(btn => {
         btn.addEventListener('click', () => {
             modal.style.display = 'block';
             if(document.scrollingElement.offsetWidth > 768){
-                animationModal();
+                animationModal(count, animate, modal);
             }
         })
     })
