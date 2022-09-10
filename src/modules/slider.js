@@ -7,7 +7,7 @@ const slider = () =>{
     const dotClass = document.createElement('ul');
     dotClass.className = 'portfolio-dots';
     btnNext.after(dotClass);
-    console.log(dotClass)
+    
     
     const createDot = () => {
         for(let i = 0; i < sliders.length; i++){
