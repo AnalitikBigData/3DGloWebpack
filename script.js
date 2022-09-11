@@ -2,7 +2,7 @@
 let user;
 
 const getData = () => {
-    fetch('../lesson26/db.json')
+    fetch('db.json')
         .then(response => response.json())
         .then(data => {
             console.log(data)
@@ -14,9 +14,9 @@ const getData = () => {
         })
 }
 
-
 const sendData = () => {
-    fetch('https://jsonplaceholder.typicode.com/posts', {
+    //https://jsonplaceholder.typicode.com/posts
+    fetch('../lesson26/db.json', {
         method: 'POST',
         body: JSON.stringify(user),
         headers : {
