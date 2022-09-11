@@ -11,13 +11,13 @@ const modal = () => {
     
     inputName.forEach((item) => {
         item.addEventListener('input', (event) => {
-            event.target.value = event.target.value.replace(/[^а-яА-Я]/g, "");
+            event.target.value = event.target.value.replace(/[^а-яА-Я ]/g, "");
         })
     })
 
     inputPhone.forEach((item) => {
         item.addEventListener('input', (event) => {
-            event.target.value = event.target.value.replace(/[^0-9-()]/g, "");
+            event.target.value = event.target.value.replace(/[^0-9-()+]/g, "");
         })
     })
 

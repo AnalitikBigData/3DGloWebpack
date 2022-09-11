@@ -14,7 +14,7 @@ const menu = () => {
     }
 
     inputName.addEventListener('input', (event) => {
-        event.target.value = event.target.value.replace(/[^а-яА-Я]/g, "");
+        event.target.value = event.target.value.replace(/[^а-яА-Я ]/g, "");
     })
 
     inputEmail.addEventListener('input',(event) => {
@@ -22,7 +22,7 @@ const menu = () => {
     })
 
     inputTel.addEventListener('input',(event) => {
-        event.target.value = event.target.value.replace(/[^0-9-()]/g, "");
+        event.target.value = event.target.value.replace(/[^0-9-()+]/g, "");
     })
 
     menuBtn.addEventListener('click', (event) => {

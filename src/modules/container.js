@@ -6,11 +6,11 @@ const container = () => {
     
 
     inputName.addEventListener('input', (event) => {
-        event.target.value = event.target.value.replace(/[^а-яА-Я]/g, "");
+        event.target.value = event.target.value.replace(/[^а-яА-Я ]/g, "");
     })
     
     input.addEventListener('input',(event) => {
-        event.target.value = event.target.value.replace(/[^а-яА-Я -]/g, "");
+        event.target.value = event.target.value.replace(/[^а-яА-Я0-9 -!"№%:,.;()']/g, "");
     })
 
     email.addEventListener('input',(event) => {
@@ -18,7 +18,7 @@ const container = () => {
     })
 
     tel.addEventListener('input',(event) => {
-        event.target.value = event.target.value.replace(/[^0-9-()]/g, "");
+        event.target.value = event.target.value.replace(/[^0-9-()+]/g, "");
     })
 }
 
