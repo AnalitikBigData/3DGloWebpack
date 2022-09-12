@@ -2,6 +2,10 @@ const sendForm = ({ formId1, someElem1 = [] }, {formId2, someElem2 = []}, {formI
     const form1 = document.getElementById(formId1);
     const form2 = document.getElementById(formId2);
     const form3 = document.getElementById(formId3);
+    //const buttons = document.querySelectorAll('.btn.form-btn');
+    //buttons[5].disabled = true;
+    //buttons[0].disabled = true;
+    //buttons[4].disabled = true;
     
     const statusBlock = document.createElement("div");
     const loadText = 'Загрузка...';
@@ -47,6 +51,7 @@ const sendForm = ({ formId1, someElem1 = [] }, {formId2, someElem2 = []}, {formI
         const formData1 = new FormData(form1);
         const formBody1 = {}
 
+        statusBlock.style.color = 'white';
         statusBlock.textContent = loadText;
         form1.append(statusBlock)
         
@@ -64,8 +69,10 @@ const sendForm = ({ formId1, someElem1 = [] }, {formId2, someElem2 = []}, {formI
         })
         console.log(validate1(formElement1))
         if(validate1(formElement1)){
+            //buttons[0].disabled = false;
             sendData(formBody1)
             .then(data =>{
+                statusBlock.style.color = 'white';
                 statusBlock.textContent = successText;
                 setTimeout(() => {
                     statusBlock.textContent = '';
@@ -76,7 +83,11 @@ const sendForm = ({ formId1, someElem1 = [] }, {formId2, someElem2 = []}, {formI
             })
         }
         else {
-            alert("Data isn't correct")
+            statusBlock.style.color = 'red';
+            statusBlock.textContent = 'Неверные данные!!!';
+            form1.append(statusBlock)
+            //buttons[0].disabled = true;
+
         }
     }
 
@@ -84,7 +95,7 @@ const sendForm = ({ formId1, someElem1 = [] }, {formId2, someElem2 = []}, {formI
         const formElement2 = form2.querySelectorAll('input');
         const formData2 = new FormData(form2);
         const formBody2 = {}
-
+        statusBlock.style.color = 'white';
         statusBlock.textContent = loadText;
         form2.append(statusBlock)
 
@@ -103,6 +114,7 @@ const sendForm = ({ formId1, someElem1 = [] }, {formId2, someElem2 = []}, {formI
 
         console.log(validate2(formElement2))
         if(validate2(formElement2)){
+            //buttons[4].disabled = false;
             sendData(formBody2)
             .then(data =>{
                 statusBlock.style.color = 'blue';
@@ -120,7 +132,10 @@ const sendForm = ({ formId1, someElem1 = [] }, {formId2, someElem2 = []}, {formI
             
         }
         else {
-            alert("Data isn't correct")
+            statusBlock.style.color = 'red';
+            statusBlock.textContent = 'Неверные данные!!!';
+            form2.append(statusBlock)
+            //buttons[4].disabled = true;
         }
     }
 
@@ -128,7 +143,7 @@ const sendForm = ({ formId1, someElem1 = [] }, {formId2, someElem2 = []}, {formI
         const formElement3 = form3.querySelectorAll('input');
         const formData3 = new FormData(form3);
         const formBody3 = {}
-
+        statusBlock.style.color = 'white';
         statusBlock.textContent = loadText;
         form3.append(statusBlock)
         
@@ -147,6 +162,7 @@ const sendForm = ({ formId1, someElem1 = [] }, {formId2, someElem2 = []}, {formI
 
         console.log(validate3(formElement3))
         if(validate3(formElement3)){
+            //buttons[5].disabled = false;
             sendData(formBody3)
             .then(data =>{
                 statusBlock.style.color = 'white';
@@ -160,7 +176,10 @@ const sendForm = ({ formId1, someElem1 = [] }, {formId2, someElem2 = []}, {formI
             })
         }
         else {
-            alert("Data isn't correct")
+            statusBlock.style.color = 'red';
+            statusBlock.textContent = 'Неверные данные!!!';
+            form3.append(statusBlock)
+            //buttons[5].disabled = true;
         }
     }
 
