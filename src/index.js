@@ -16,12 +16,24 @@ tabs();
 slider();
 sendForm({ 
     formId1: 'form1', 
-    someElem: [{
+    someElem1: [{
             type : 'block',
             id : 'total'
         }
     ]
 }, 
-    {formId2 : 'form2'},
-    {formId3 : 'form3'}
+    {formId2 : 'form2', 
+    someElem2: [{
+        type : 'block',
+        id : 'total'
+    }
+    ]
+},
+    {formId3 : 'form3', 
+    someElem3: [{
+        type : 'block',
+        id : 'total'
+    }
+]
+}
 );

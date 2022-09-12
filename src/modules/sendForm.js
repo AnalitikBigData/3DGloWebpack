@@ -11,7 +11,7 @@ const sendForm = ({ formId1, someElem1 = [] }, {formId2, someElem2 = []}, {formI
     const validate1 = (list) => {
         let success = true;
         list.forEach((input, index) => {
-            success = (!/[^а-яА-Я ]/.test(list[0].value)) && (!/[^a-zA-Z0-9@-_.!~*']/.test(list[1].value)) && (!/[^0-9-()+]/.test(list[2].value));
+            success = (!/[^а-яА-Я ]/.test(list[0].value)) && (/[^ ]/.test(list[0].value)) && (!/[^a-zA-Z0-9@-_.!~*']/.test(list[1].value)) && (!/[^0-9-()+]/.test(list[2].value));
         })
         return success;
     }
@@ -19,7 +19,7 @@ const sendForm = ({ formId1, someElem1 = [] }, {formId2, someElem2 = []}, {formI
     const validate2 = (list) => {
         let success = true;
         list.forEach((input, index) => {
-            success = (!/[^а-яА-Я ]/.test(list[0].value)) && (!/[^a-zA-Z0-9@-_.!~*']/.test(list[1].value)) && (!/[^0-9-()+]/.test(list[2].value)) && (!/[^а-яА-Я0-9 -!"№%:,.;()']/.test(list[3].value));
+            success = (!/[^а-яА-Я ]/.test(list[0].value)) && (/[^ ]/.test(list[0].value)) && (!/[^a-zA-Z0-9@-_.!~*']/.test(list[1].value)) && (!/[^0-9-()+]/.test(list[2].value)) && (!/[^а-яА-Я0-9 -!"№%:,.;()']/.test(list[3].value) && (/[^ ]/.test(list[3].value)));
         })
         return success;
     }
@@ -27,7 +27,7 @@ const sendForm = ({ formId1, someElem1 = [] }, {formId2, someElem2 = []}, {formI
     const validate3 = (list) => {
         let success = true;
         list.forEach((input, index) => {
-            success = (!/[^а-яА-Я ]/.test(list[0].value)) && (!/[^a-zA-Z0-9@-_.!~*']/.test(list[2].value)) && (!/[^0-9-()+]/.test(list[1].value));
+            success = (!/[^а-яА-Я ]/.test(list[0].value)) && (/[^ ]/.test(list[0].value)) && (!/[^a-zA-Z0-9@-_.!~*']/.test(list[2].value)) && (!/[^0-9-()+]/.test(list[1].value));
         })
         return success;
     }
@@ -67,13 +67,16 @@ const sendForm = ({ formId1, someElem1 = [] }, {formId2, someElem2 = []}, {formI
             sendData(formBody1)
             .then(data =>{
                 statusBlock.textContent = successText;
+                setTimeout(() => {
+                    statusBlock.textContent = '';
+                }, 2000)
                 formElement1.forEach (input => {
                     input.value = '';
                 })
             })
         }
         else {
-            alert("Data isn't validate")
+            alert("Data isn't correct")
         }
     }
 
@@ -83,6 +86,7 @@ const sendForm = ({ formId1, someElem1 = [] }, {formId2, someElem2 = []}, {formI
         const formBody2 = {}
 
         statusBlock.textContent = loadText;
+        form2.append(statusBlock)
 
         formData2.forEach((val, key) => {
             formBody2[key] = val;
@@ -101,6 +105,11 @@ const sendForm = ({ formId1, someElem1 = [] }, {formId2, someElem2 = []}, {formI
         if(validate2(formElement2)){
             sendData(formBody2)
             .then(data =>{
+                statusBlock.style.color = 'blue';
+                statusBlock.textContent = successText;
+                setTimeout(() => {
+                    statusBlock.textContent = '';
+                }, 2000)
                 formElement2.forEach(input =>{
                     input.value = '';
                 })
@@ -111,7 +120,7 @@ const sendForm = ({ formId1, someElem1 = [] }, {formId2, someElem2 = []}, {formI
             
         }
         else {
-            alert("Data isn't validate")
+            alert("Data isn't correct")
         }
     }
 
@@ -140,14 +149,18 @@ const sendForm = ({ formId1, someElem1 = [] }, {formId2, someElem2 = []}, {formI
         if(validate3(formElement3)){
             sendData(formBody3)
             .then(data =>{
+                statusBlock.style.color = 'white';
                 statusBlock.textContent = successText;
+                setTimeout(() => {
+                    statusBlock.textContent = '';
+                }, 2000)
                 formElement3.forEach (input => {
                     input.value = '';
                 })
             })
         }
         else {
-            alert("Data isn't validate")
+            alert("Data isn't correct")
         }
     }
 
